@@ -20,8 +20,10 @@
           <td><%= product.stock %></td>
           <td>
             <%= link_to 'Show', product_path(product), class: "btn btn-primary btn-sm" %>
-            <%= link_to 'Edit', edit_product_path(product), class: "btn btn-secondary btn-sm" %>
-            <%= link_to 'Delete', product_path(product), data: { "turbo-method": :delete, confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+            <% if current_user.admin? %>
+              <%= link_to 'Edit', edit_product_path(product), class: "btn btn-secondary btn-sm" %>
+              <%= link_to 'Delete', product_path(product), data: { "turbo-method": :delete, confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+            <% end %>
           </td>
         </tr>
       <% end %>
@@ -33,4 +35,6 @@
   </tbody>
 </table>
 
-<%= link_to 'New Product', new_product_path, class: "btn btn-success" %>
+<% if current_user.admin? %>
+  <%= link_to 'New Product', new_product_path, class: "btn btn-success" %>
+<% end %>
