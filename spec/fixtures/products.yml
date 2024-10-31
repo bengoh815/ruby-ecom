@@ -1,0 +1,5 @@
+sample_product:
+  name: "Sample Product"
+  description: "This is a test product."
+  price: 10.0
+  stock: 5
