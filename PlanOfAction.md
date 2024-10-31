@@ -51,3 +51,25 @@ Final Tips:
     •	MVP Focus: Keep each feature as simple as possible to fit into the two-week timeline. Save advanced AWS integrations for a later stage or as optional upgrades.
 
 This approach will allow you to build a meaningful, functional e-commerce app within two weeks, providing you with a solid foundation to showcase in interviews while minimizing unnecessary complexity.
+
+2. Testing
+
+   • Unit Tests: Write unit tests for models, controllers, and policies to ensure your application behaves as expected.
+   • Integration Tests: Test entire workflows, like creating and updating products, to verify that all parts of the app work together.
+   • Authorization Tests: Make sure unauthorized users can’t access restricted actions.
+
+3. Additional Features
+
+   • File Uploads: Use Active Storage to allow users to upload images for each product.
+   • Product Categorization: Create categories and let users filter products by category.
+   • Shopping Cart (optional): Implement a basic cart if your app is moving towards an e-commerce focus.
+
+4. API Development (optional)
+
+   • Build a JSON API for your app, which would allow other services or a future mobile app to access the data.
+
+5. Deployment
+
+   • Set up a staging environment for your app on a cloud platform (like Heroku, DigitalOcean, or AWS) and deploy the app. This step will help you learn about deployment and handling a production-like environment.
+
+although UI is important ill leave it for the last

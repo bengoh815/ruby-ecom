@@ -3,5 +3,19 @@
 <p><strong>Price:</strong> <%= number_to_currency(@product.price) %></p>
 <p><strong>Stock:</strong> <%= @product.stock %></p>
 
+<% if @product.images.attached? %>
+    <div class="container">
+    <div class="row">
+        <% @product.images.each do |image| %>
+        <div class="col-md-4 mb-3">
+            <div class="card">
+            <%= image_tag image, class: "card-img-top img-fluid" %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+    </div>
+<% end %>
+
 <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-secondary" %>
 <%= link_to 'Back to Products', products_path, class: "btn btn-primary" %>
