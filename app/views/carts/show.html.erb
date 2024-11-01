@@ -1,0 +1,18 @@
+<h1>Your Cart</h1>
+
+<div id="cart-items">
+  <% if @cart.cart_items.any? %>
+    <% @cart.cart_items.each do |cart_item| %>
+      <%= render partial: "cart_items/cart_item", locals: { cart_item: cart_item } %>
+    <% end %>
+  <% else %>
+    <p>Your cart is empty.</p>
+  <% end %>
+</div>
+
+<div class="cart-total">
+  <h3>Total: <%= number_to_currency(@cart.cart_items.sum { |item| item.product.price * item.quantity }) %></h3>
+</div>
+
+<%= link_to "Continue Shopping", products_path, class: "btn btn-secondary" %>
+<%= link_to "Checkout", "#", class: "btn btn-primary" %>

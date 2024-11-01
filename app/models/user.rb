@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # Run set_default_role before saving a user
   before_save :set_default_role
+  after_create :initialize_cart 
 
   # Role-based access methods
   def admin?
@@ -16,9 +16,15 @@ class User < ApplicationRecord
     role == 'regular'
   end
 
+  has_one :cart, dependent: :destroy
+
   private
 
   def set_default_role
     self.role ||= 'regular'  # Sets role to 'regular' if it's not already set
+  end
+
+  def initialize_cart
+    create_cart unless cart.present?
   end
 end
