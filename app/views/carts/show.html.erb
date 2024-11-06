@@ -15,4 +15,4 @@
 </div>
 
 <%= link_to "Continue Shopping", products_path, class: "btn btn-secondary" %>
-<%= link_to "Checkout", "#", class: "btn btn-primary" %>
+<%= button_to 'Checkout with Stripe', checkout_index_path, method: :post, class: 'btn btn-primary', form: { data: { turbo: false } } %>

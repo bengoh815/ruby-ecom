@@ -27,6 +27,7 @@ gem "jbuilder"
 
 gem "devise"
 gem "pundit"
+gem "stripe"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -48,6 +49,8 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   gem "rspec-rails", "~> 5.0"
+
+  gem "dotenv-rails"
 end
 
 group :development do

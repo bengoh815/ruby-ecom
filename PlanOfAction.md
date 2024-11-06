@@ -1,3 +1,23 @@
+Welcome back! 🎉 You’ve got quite a functional setup so far, and here’s where you left off:
+
+    1.	Completed:
+    •	Set up a product model with images and a cart system.
+    •	Built the Cart, CartItem, Product, and User models, along with the controllers.
+    •	Integrated Pundit for authorization, ensuring actions are controlled by user roles.
+    •	Established a Bootstrap-based UI with a navbar that dynamically shows cart items for each user.
+    2.	Potential Next Steps:
+    •	Testing (revisit RSpec if you’d like): Since testing faced challenges previously, we can take another look to ensure your app’s reliability.
+    •	Model Tests: Verify the data integrity and business logic in your models.
+    •	Controller Tests: Check that your controllers perform expected actions and enforce policies correctly.
+    •	Integration Tests: Test end-to-end workflows (like adding to the cart and checking out) to ensure each part works together smoothly.
+    •	Additional Features:
+    •	Checkout Flow: Expand the cart with a basic checkout feature that can eventually include payment integrations.
+    •	Order Management: Introduce an Order model to store confirmed purchases and allow users to view order histories.
+    •	Product Categories & Filtering: Allow users to filter and view products by category.
+    •	Deployment: Deploying to a service like Heroku or DigitalOcean will give you a chance to manage staging/production environments and understand live app handling.
+
+Let me know if any of these spark your interest, and we can dive in!
+
 To make this E-commerce Web Application with Real-Time Order Tracking doable within 2 weeks, you’ll need to narrow the scope and focus on the core features that showcase your abilities without getting bogged down by complex integrations. Here’s a plan to streamline the project for a two-week timeline while still wowing recruiters:
 
 Focus on Core Features (Estimated Timeline: 2 Weeks)
