@@ -7,15 +7,15 @@ class User < ApplicationRecord
   has_many :orders, dependent: :destroy
 
   before_save :set_default_role
-  after_create :initialize_cart 
+  after_create :initialize_cart
 
   # Role-based access methods
   def admin?
-    role == 'admin'
+    role == "admin"
   end
 
   def regular?
-    role == 'regular'
+    role == "regular"
   end
 
   has_one :cart, dependent: :destroy
@@ -23,7 +23,7 @@ class User < ApplicationRecord
   private
 
   def set_default_role
-    self.role ||= 'regular'  # Sets role to 'regular' if it's not already set
+    self.role ||= "regular"  # Sets role to 'regular' if it's not already set
   end
 
   def initialize_cart

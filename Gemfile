@@ -28,7 +28,7 @@ gem "jbuilder"
 gem "devise"
 gem "pundit"
 gem "stripe"
-gem 'paranoia'
+gem "paranoia"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -55,7 +55,7 @@ group :development, :test do
 
   gem "factory_bot_rails"
 
-  gem 'faker'
+  gem "faker"
 end
 
 group :development do
@@ -67,5 +67,5 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-  gem 'rails-controller-testing'
+  gem "rails-controller-testing"
 end

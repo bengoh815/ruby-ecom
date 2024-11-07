@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_cart, only: [:show, :destroy]
+  before_action :set_cart, only: [ :show, :destroy ]
 
   def show
     # Displays the user's current cart

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   root "pages#home"
 
   resources :products do
-    post 'add_to_cart', to: 'cart_items#create'
+    post "add_to_cart", to: "cart_items#create"
     member do
       patch :restore
     end
@@ -22,20 +22,19 @@ Rails.application.routes.draw do
       get :deleted
     end
   end
-  resources :carts, only: [:show, :create, :destroy]
-  resources :cart_items, only: [:create, :update, :destroy]
+  resources :carts, only: [ :show, :create, :destroy ]
+  resources :cart_items, only: [ :create, :update, :destroy ]
 
-  resources :checkout, only: [:create] do
+  resources :checkout, only: [ :create ] do
     collection do
       get :success
       get :cancel
     end
   end
 
-  resources :orders, only: [:index, :create, :show] do
+  resources :orders, only: [ :index, :create, :show ] do
     member do
       patch :update_status
     end
   end
-
 end

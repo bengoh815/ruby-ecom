@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_and_authorize_product, only: [:show, :edit, :update, :destroy]
-  after_action :verify_authorized, except: [:index]
+  before_action :set_and_authorize_product, only: [ :show, :edit, :update, :destroy ]
+  after_action :verify_authorized, except: [ :index ]
 
   def index
     if params[:query].present?
@@ -58,7 +58,7 @@ class ProductsController < ApplicationController
     authorize @product
     if @product.restore
       redirect_to deleted_products_path, notice: "Product was successfully restored."
-    else 
+    else
       redirect_to deleted_products_path, alert: "Failed to restore product."
     end
   end

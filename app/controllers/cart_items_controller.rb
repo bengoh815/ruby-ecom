@@ -2,7 +2,7 @@ class CartItemsController < ApplicationController
   include ActionView::RecordIdentifier
   before_action :authenticate_user!
   before_action :set_cart
-  before_action :set_cart_item, only: [:update, :destroy]
+  before_action :set_cart_item, only: [ :update, :destroy ]
 
   def create
     product = Product.find(params[:product_id])

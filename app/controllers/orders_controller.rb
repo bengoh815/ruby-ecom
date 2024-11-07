@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_order, only: [:show, :update_status]
-  after_action :verify_authorized, except: [:index]
+  before_action :set_order, only: [ :show, :update_status ]
+  after_action :verify_authorized, except: [ :index ]
 
   def index
     authorize Order

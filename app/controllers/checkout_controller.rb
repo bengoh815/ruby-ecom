@@ -5,20 +5,20 @@ class CheckoutController < ApplicationController
     line_items = cart.cart_items.map do |item|
       {
         price_data: {
-          currency: 'usd',
+          currency: "usd",
           product_data: {
-            name: item.product.name,
+            name: item.product.name
           },
-          unit_amount: (item.product.price * 100).to_i,
+          unit_amount: (item.product.price * 100).to_i
         },
-        quantity: item.quantity,
+        quantity: item.quantity
       }
     end
 
     session = Stripe::Checkout::Session.create(
-      payment_method_types: ['card'],
+      payment_method_types: [ "card" ],
       line_items: line_items,
-      mode: 'payment',
+      mode: "payment",
       success_url: success_checkout_index_url, # Redirect here after successful payment
       cancel_url: cancel_checkout_index_url # Redirect here if payment is canceled
     )
@@ -35,7 +35,7 @@ class CheckoutController < ApplicationController
     order = Order.create!(
       user: current_user,
       total_price: cart.total_amount, # Assuming total_amount is a method on the cart to calculate the total
-      status: 'completed'
+      status: "completed"
     )
 
     # Associate cart items with the order
