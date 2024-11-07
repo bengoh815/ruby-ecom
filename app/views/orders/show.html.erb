@@ -7,6 +7,21 @@
 <h2>Order Items</h2>
 <ul>
   <% @order.order_items.each do |item| %>
-    <li><%= item.product.name %> - Quantity: <%= item.quantity %> - Price: <%= number_to_currency(item.product.price) %></li>
+    <li>
+      <%= item.product.name %> - Quantity: <%= item.quantity %> - Price: <%= number_to_currency(item.product.price) %>
+    </li>
   <% end %>
 </ul>
+
+<!-- Status Update Form for Admins -->
+<% if current_user.admin? && policy(@order).update_status? %>
+  <%= form_with model: @order, url: update_status_order_path(@order), method: :patch do |f| %>
+    <div class="field">
+      <%= f.label :status, "Update Status" %>
+      <%= f.select :status, Order.statuses.keys %>
+    </div>
+    <%= f.submit "Update Status", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Back to Orders', orders_path, class: "btn btn-secondary" %>

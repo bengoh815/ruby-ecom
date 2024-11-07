@@ -32,6 +32,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :orders, only: [:index, :create, :show]
+  resources :orders, only: [:index, :create, :show] do
+    member do
+      patch :update_status
+    end
+  end
 
 end

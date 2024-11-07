@@ -34,7 +34,8 @@ class OrdersController < ApplicationController
   end
 
   def update_status
-    if @order.update(status: params[:status])
+    authorize @order, :update_status?
+    if @order.update(order_status_params)
       redirect_to @order, notice: "Order status updated successfully."
     else
       redirect_to @order, alert: "Failed to update order status."
@@ -50,5 +51,9 @@ class OrdersController < ApplicationController
   def set_order
     @order = Order.find(params[:id])
     authorize @order
+  end
+
+  def order_status_params
+    params.require(:order).permit(:status)
   end
 end
