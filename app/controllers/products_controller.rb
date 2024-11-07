@@ -4,7 +4,11 @@ class ProductsController < ApplicationController
   after_action :verify_authorized, except: [:index]
 
   def index
-    @products = policy_scope(Product)
+    if params[:query].present?
+      @products = policy_scope(Product).search(params[:query])
+    else
+      @products = policy_scope(Product)
+    end
   end
 
   def show
