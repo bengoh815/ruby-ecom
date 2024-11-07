@@ -1,0 +1,28 @@
+<h1>Deleted Products</h1>
+
+<% if @deleted_products.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @deleted_products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.description %></td>
+          <td><%= number_to_currency(product.price) %></td>
+          <td>
+            <%= link_to "Restore", restore_product_path(product), data: { "turbo-method": :patch, confirm: "Are you sure you want to restore this product?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No deleted products found.</p>
+<% end %>

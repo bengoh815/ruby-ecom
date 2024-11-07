@@ -27,6 +27,14 @@ class ProductPolicy < ApplicationPolicy
     user.admin?  # Only admins can delete products
   end
 
+  def restore?
+    destroy?
+  end
+
+  def deleted?
+    destroy?
+  end
+
   # Scope class to limit which records are shown
   class Scope < Scope
     def resolve

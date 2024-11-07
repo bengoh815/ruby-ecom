@@ -15,6 +15,12 @@ Rails.application.routes.draw do
 
   resources :products do
     post 'add_to_cart', to: 'cart_items#create'
+    member do
+      patch :restore
+    end
+    collection do
+      get :deleted
+    end
   end
   resources :carts, only: [:show, :create, :destroy]
   resources :cart_items, only: [:create, :update, :destroy]

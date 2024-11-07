@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  acts_as_paranoid
   validates :name, presence: true
   validates :description, presence: true
   validates :price, presence: true, numericality: { greater_than: 0 }

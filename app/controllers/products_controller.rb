@@ -49,6 +49,22 @@ class ProductsController < ApplicationController
     redirect_to products_path, notice: "Product was successfully deleted."
   end
 
+  def restore
+    @product = Product.only_deleted.find(params[:id])
+    authorize @product
+    if @product.restore
+      redirect_to deleted_products_path, notice: "Product was successfully restored."
+    else 
+      redirect_to deleted_products_path, alert: "Failed to restore product."
+    end
+  end
+
+  def deleted
+    @deleted_products = Product.only_deleted
+    authorize Product
+  end
+
+
   private
 
   def set_and_authorize_product
