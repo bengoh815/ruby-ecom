@@ -30,10 +30,31 @@ class CheckoutController < ApplicationController
   end
 
   def success
-    # Update order status, empty the cart, or do other post-checkout actions here
+    # Create an order upon successful payment
+    cart = current_user.cart
+    order = Order.create!(
+      user: current_user,
+      total_price: cart.total_amount, # Assuming total_amount is a method on the cart to calculate the total
+      status: 'completed'
+    )
+
+    # Associate cart items with the order
+    cart.cart_items.each do |item|
+      order.order_items.create!(
+        product: item.product,
+        quantity: item.quantity,
+        price: item.product.price
+      )
+    end
+
+    # Clear the cart after order is created
+    cart.cart_items.destroy_all
+
+    redirect_to order, notice: "Thank you for your purchase! Your order has been successfully created."
   end
 
   def cancel
     # Handle checkout cancellation
+    redirect_to cart_path(current_user.cart), alert: "Checkout was canceled. Please try again."
   end
 end

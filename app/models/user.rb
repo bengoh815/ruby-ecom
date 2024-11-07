@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :orders, dependent: :destroy
+
   before_save :set_default_role
   after_create :initialize_cart 
 

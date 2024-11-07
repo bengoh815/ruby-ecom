@@ -8,4 +8,10 @@ class Cart < ApplicationRecord
     current_item.save
     current_item
   end
+
+  def total_amount
+    cart_items.includes(:product).sum do |item|
+      item.quantity * item.product.price
+    end
+  end
 end
